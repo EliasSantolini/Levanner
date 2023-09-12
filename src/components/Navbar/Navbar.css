@@ -1,0 +1,16 @@
+.Navbar {
+  background-color: rgb(202, 67, 67);
+  height: 40px;
+  padding: 5px 0;
+}
+
+.Titulo {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-left: 30px;
+  margin-top: 0px;
+  float: left;
+  position: relative;
+  font-size: 35px;
+  cursor: pointer;
+  color: black;
+}
