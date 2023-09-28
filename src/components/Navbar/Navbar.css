@@ -1,16 +1,28 @@
 .Navbar {
-  background-color: rgb(202, 67, 67);
+  background-color: rgb(206, 74, 41);
   height: 40px;
   padding: 5px 0;
 }
 
+.Navbar Link {
+  margin-top: 15px;
+  position: relative;
+  margin-left: 20px;
+  padding: 5px;
+  right: 100px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  cursor: pointer;
+}
+
 .Titulo {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin-left: 30px;
-  margin-top: 0px;
+  margin-left: 10px;
+  margin-top: -5px;
   float: left;
   position: relative;
   font-size: 35px;
   cursor: pointer;
-  color: black;
+}
+
+.categorias {
+  margin-left: 100px;
 }
