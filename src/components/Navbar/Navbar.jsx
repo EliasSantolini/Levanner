@@ -1,30 +1,31 @@
 import "./Navbar.css";
 import CartWidget from "../CartWidget/CartWidget";
-import  { Link } from "react-router-dom"
-
+import "../CartWidget/CartWidget.css";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContex";
 
 const Navbar = () => {
+  const { totalQuantity } = useContext(CartContext);
+
   return (
     <div>
       <nav className="Navbar">
         <div>
-          <h1 className="Titulo">Levanner</h1>
-          <CartWidget />
-          <div className="categorias">
-            <Link
-              className="hombre"
-              to="/category/hombre"
-              style={{ margin: 50 }}
-            >Perfumes para hombres
-            </Link>
-            <Link className="Link" to="/category/mujer">
-              Perfumes para mujeres
-            </Link>
-            <Link className="Link" to="/" style={{ margin: 50 }}>
-              Ver Todos
-            </Link>
-          </div>
+          <Link to="/">
+            <h1 className="Titulo">Levanner</h1>
+          </Link>
+          <Link to="/category/hombre" className="Link" style={{ margin: 10 }}>
+            Perfumes para hombres
+          </Link>
+          <Link to="/category/mujer" className="Link">
+            Perfumes para mujeres
+          </Link>
+          <Link to="/category/unisex" className="Link" style={{ margin: 10 }}>
+            Perfumes Unisex
+          </Link>
         </div>
+        <CartWidget quantity={totalQuantity} />
       </nav>
     </div>
   );

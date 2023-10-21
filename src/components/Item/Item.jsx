@@ -1,10 +1,9 @@
-import { Link } from "react";
+import { Link } from "react-router-dom";
+import "./Item.css";
 
-
-
-const Item = ( name, img, price, id  ) => {
+const Item = ( name, img, price, id ) => {
   return (
-    <div>
+    <div className="div-1">
       <h4>{name}</h4>
       <img src={img} alt={name} style={{ width: 200 }} />
       <p>$ {price}</p>
@@ -13,4 +12,4 @@ const Item = ( name, img, price, id  ) => {
   );
 };
 
-export default Item; 
+export default Item;

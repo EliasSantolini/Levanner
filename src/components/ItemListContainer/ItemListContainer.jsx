@@ -1,31 +1,48 @@
 import "./ItemListContainer.css";
 import { useEffect, useState } from "react";
-import { getProducts, getProductsByCategory } from "../asyncMock";
-import ItemList from "../ItemList/ItemList"; 
+import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../../Services/Firebase/FirebaseConfig";
 
-const ItemListContainer = () => {
-  const [ products , setProducts] = useState([]);
+const ItemListContainer = (greeting) => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const { categoryId } = useParams();
 
   useEffect(() => {
-    const asyncFunction = categoryId ? getProductsByCategory : getProducts;
+    (async () => {
+      setLoading(true);
 
-    asyncFunction(categoryId)
-      .then((products) => {
-        setProducts(products);
-      })
-      .catch((error) => {
+      const productsRef = collection(db, "products");
+
+      try {
+        const snapshot = await getDocs(productsRef);
+
+        const productsAdapted = snapshot.docs.map((doc) => {
+          const fields = doc.data();
+
+          return { id: doc.id, ...fields };
+        });
+
+        setProducts(productsAdapted);
+      } catch (error) {
         console.log(error);
-      });
+      } finally {
+        setLoading(false);
+      }
+    })();
   }, [categoryId]);
+
+  if (loading) {
+    return <h1>Cargando productos...</h1>;
+  }
 
   return (
     <div>
-      <h1 className="titulo">¡Bienvenidos a la perfumeria Levanner!</h1>
-      { <ItemList products={products} /> }
-      
+      <h1>{greeting}</h1>
+      <ItemList products={products} />
     </div>
   );
 };
