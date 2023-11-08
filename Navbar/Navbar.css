@@ -1,0 +1,28 @@
+.Navbar {
+  background-color: rgb(206, 74, 41);
+  height: 40px;
+  padding: 5px 0;
+}
+
+.Navbar Link {
+  margin-top: 15px;
+  position: relative;
+  margin-left: 20px;
+  padding: 5px;
+  right: 100px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  cursor: pointer;
+}
+
+.Titulo {
+  margin-left: 10px;
+  margin-top: -5px;
+  float: left;
+  position: relative;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.categorias {
+  margin-left: 100px;
+}
